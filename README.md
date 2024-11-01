@@ -1,4 +1,4 @@
-Program 1: Getting Familiar with Assembly
+# Program 1: Getting Familiar with Assembly
 Contributors:
 Elijah Rosal, Caleb Szeto, Ryan Hansen, Eric Chen, Cameron Bolanos
 Course: CS2640
