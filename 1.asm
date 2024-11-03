@@ -1,7 +1,8 @@
-# Elijah Rosal
+# Elijah Rosal, Caleb Szeto, Ryan Hansen, Eric Chen, Cameron Bolanos
 # CS2640
 # 10-23-2024
 # Program 1: Getting Familiar with Assembly
+# Github Repo Link: https://github.com/CS2640-Program-Group/Program_1 
 
 .data
 buffer: .space 20
@@ -21,7 +22,7 @@ equal_msg: .asciiz "User inputs are the same"
 not_equal_msg: .asciiz "User inputs are different" 
 
 .text
-	
+
 main: 
 # Task 1
 input_first:
