@@ -93,7 +93,7 @@ addition:
 	
 	jal print_sec		# Jump and link to print_sec subroutine
 
-	jal print_equals		# Jump and link to print_equals subroutine
+	jal print_equals	# Jump and link to print_equals subroutine
 	
 	move $a0, $t2		# Move the result of $s0 - $s1 into $a0 for printing
 	li $v0, 1		# Load syscall for print_int
@@ -115,7 +115,7 @@ subtraction:
 	
 	jal print_sec		# Jump and link to print_sec subroutine
 	
-	jal print_equals		# Jump and link to print_equals subroutine
+	jal print_equals	# Jump and link to print_equals subroutine
 	
 	move $a0, $t2		# Move the result of $s0 + $s1 into $a0 for printing
 	li $v0, 1		# Load syscall for print_int
@@ -160,7 +160,7 @@ division:
 	
 	jal print_sec		# Jump and link to print_sec subroutine
 	
-	jal print_equals		# Jump and link to print_equals subroutine
+	jal print_equals	# Jump and link to print_equals subroutine
 	
 	move $a0, $t2		# Move the result of $s0 / $s1 into $a0 for printing
 	li $v0, 1		# Load syscall for print_int
@@ -209,7 +209,7 @@ check_numeric:
         	lb $t1, 0($t0)			# Load the first byte from buffer
         	beq $t1, 0, invalid_input	# If first character is null, input is invalid
         	beq $t1, '-', negative		# If the first character is '-', set flag to negative
-        	j process_digits			# If not '-', process digits
+        	j process_digits		# If not '-', process digits
 	
 negative:
         	li $t2, 1              # Set sign flag to 1 (negative)
@@ -222,24 +222,24 @@ loop:
 	blt $t1, '0', invalid_input	# If char < '0', it's not a digit
 	bgt $t1, '9', invalid_input	# If char > '9', it's not a digit
 
-        	# Convert char to integer and add to result
-        	sub $t1, $t1, '0'		# Convert ASCII character to integer
-        	beq $t3, 1, second		# Check if we are working with the second integer
-        	mul $s0, $s0, 10			# Shift previous result by 10 (for decimal place)
-        	add $s0, $s0, $t1		# Add the digit to $s0
-        	addi $t0, $t0, 1			# Move to the next character in the buffer
-        	j loop				# Repeat for the next character
+        # Convert char to integer and add to result
+        sub $t1, $t1, '0'		# Convert ASCII character to integer
+        beq $t3, 1, second		# Check if we are working with the second integer
+	mul $s0, $s0, 10		# Shift previous result by 10 (for decimal place)
+        add $s0, $s0, $t1		# Add the digit to $s0
+	addi $t0, $t0, 1		# Move to the next character in the buffer
+	j loop				# Repeat for the next character
         
-        	second:
-        	mul $s1, $s1, 10			# Shift previous result by 10 (for decimal place)
-        	add $s1, $s1, $t1		# Add the digit to $s1
-        	addi $t0, $t0, 1			# Move to the next character in the buffer
+        second:
+	mul $s1, $s1, 10		# Shift previous result by 10 (for decimal place)
+        add $s1, $s1, $t1		# Add the digit to $s1
+	addi $t0, $t0, 1		# Move to the next character in the buffer
 	j loop				# Repeat for the next character
 
 end_check:
 	# If the sign flag is set, make the result negative
-	beq $t2, 0, done		# If sign flag is 0 (positive), skip negation
-	beq $t3, 1, other
+	beq $t2, 0, done	# If sign flag is 0 (positive), skip negation
+	beq $t3, 1, other	# Check for the second integer checkpoint
 	sub $s0, $zero, $s0	# Negate $s0 if it's a negative number
 	j done
 	other:
@@ -254,7 +254,7 @@ invalid_input:
 	la $a0, invalid		# Load address of invalid input message
 	syscall			# Print invalid input message
 	beq $t3, 1, input_second	# Jump back to input_second
-	j input_first		# Jump back to input_first to prompt again
+	j input_first			# Jump back to input_first to prompt again
 	
 print_first:
 	move $a0, $s0		# Move the value of $s0 to $a0 for printing
