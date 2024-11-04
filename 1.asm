@@ -1,4 +1,4 @@
-# Elijah Rosal, Caleb Szeto, Ryan Hansen, Eric Chen, Cameron Bolanos
+# Elijah Rosal, Caleb Szeto, Ryan Hansen, Cameron Bolanos
 # CS2640
 # 10-23-2024
 # Program 1: Getting Familiar with Assembly
