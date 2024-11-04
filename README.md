@@ -1,7 +1,7 @@
 # Program 1: Getting Familiar with Assembly
 
 ### Contributors
-- Elijah Rosal, Caleb Szeto, Ryan Hansen, Eric Chen, Cameron Bolanos
+- Elijah Rosal, Caleb Szeto, Ryan Hansen, Cameron Bolanos
 - **Course**: CS2640
 - **Date**: 10-23-2024
 
